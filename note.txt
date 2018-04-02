@@ -1,4 +1,5 @@
 npm i
+
 npm run build
 npm link
 
@@ -6,3 +7,7 @@ mkdir react-chartjsx-test
 cd react-chartjsx-test
 create-react-app .
 npm link react-chartjsx
+
+import { Link, Bar } from 'react-chartjsx';
+
+Using => <Line /> <Bar />

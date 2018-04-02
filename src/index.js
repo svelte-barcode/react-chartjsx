@@ -1,11 +1,51 @@
 import React from 'react'
+import ChartjsxComponent from '../lib/chartjsx'
 
-class Chart extends React.Component {
+export class Line extends React.Component {
   render() {
     return (
-      <div>Chart!</div>
-    );
+      <ChartjsxComponent />
+    )
   }
 }
 
-export default Chart;
+export class Bar extends React.Component {
+  render() {
+    return (
+      <div>Bar!</div>
+    )
+  }
+}
+
+export class Radar extends React.Component {
+  render() {
+    return (
+      <div>Radar!</div>
+    )
+  }
+}
+
+export class Doughnut extends React.Component {
+  render() {
+    return (
+      <div>Doughnut!</div>
+    )
+  }
+}
+
+export class PolarArea extends React.Component {
+  render() {
+    return (
+      <div>PolarArea!</div>
+    )
+  }
+}
+
+export class Bubble extends React.Component {
+  render() {
+    return (
+      <div>Bubble!</div>
+    )
+  }
+}
+
