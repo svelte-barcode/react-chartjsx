@@ -5,22 +5,38 @@
   "main": "build/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack --watch",
-    "build": "webpack"
+    "clean": "rimraf lib es build",
+    "build:cjs": "babel src --out-dir lib",
+    "build:es": "cross-env BABEL_ENV=jsnext babel src --out-dir es",
+    "build:umd": "cross-env BABEL_ENV=rollup NODE_ENV=development rollup -c -o build/react-chartjsx.js",
+    "build:umd:min": "cross-env BABEL_ENV=rollup NODE_ENV=production rollup -c -o build/react-chartjsx.min.js",
+    "build": "npm run clean && npm run build:cjs && npm run build:es && npm run build:umd && npm run build:umd:min"
   },
   "author": "Bunlong",
   "license": "ISC",
   "dependencies": {
-    "chart.js": "^2.7.2",
-    "create-react-class": "^15.6.3",
-    "react": "^16.3.0",
-    "react-dom": "^16.3.0",
-    "webpack": "^4.4.1"
+    "chart.js": "^2.7.2"
   },
   "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.2.2",
     "babel-loader": "^7.1.4",
+    "babel-plugin-external-helpers": "^6.22.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "babel-preset-env": "^1.6.1",
-    "webpack-cli": "^2.0.13"
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-1": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "babelify": "^8.0.0",
+    "cross-env": "^5.1.4",
+    "gulp": "^3.9.1",
+    "react-component-gulp-tasks": "^0.7.7",
+    "rollup": "^0.57.1",
+    "rollup-plugin-babel": "^3.0.3",
+    "rollup-plugin-commonjs": "^9.1.0",
+    "rollup-plugin-node-resolve": "^3.3.0",
+    "rollup-plugin-uglify": "^3.0.0"
   }
 }

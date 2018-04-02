@@ -1,10 +1,9 @@
 import React from 'react'
-import ChartjsxComponent from '../lib/chartjsx'
 
 export class Line extends React.Component {
   render() {
     return (
-      <ChartjsxComponent />
+      <div>Line</div>
     )
   }
 }
