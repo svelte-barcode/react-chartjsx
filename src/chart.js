@@ -2,21 +2,17 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 const dataKeys = {
-    'Line': 'points',
-    'Radar': 'points',
-    'Bar': 'bars'
+  // 'line': 'points',
+  'line': 'data',
+  'radar': 'points',
+  'bar': 'bars'
 }
 
-const addData = function(nextProps, chart, setIndex, pointIndex) {
-  var values = []
-  nextProps.data.datasets.forEach(function(set) {
-    values.push(set.data[pointIndex])
-  })
-  chart.addData(values, nextProps.data.labels[setIndex])
-}
 
-const updatePoints = function(nextProps, chart, dataKey) {
-  var name = chart.name
+var updatePoints = function(nextProps, chart, dataKey) {
+
+  var name = chart.config.type
+  var nextProps = nextProps
 
   if (name === 'PolarArea' || name === 'Pie' || name === 'Doughnut') {
     nextProps.data.forEach(function(segment, segmentIndex) {
@@ -44,20 +40,33 @@ const updatePoints = function(nextProps, chart, dataKey) {
       })
     })
   } else {
-    while (chart.scale.xLabels.length > nextProps.data.labels.length) {
+    while (chart.scales['x-axis-0'].ticks.length > nextProps.data.labels.length) {
       chart.removeData()
+      // chart.data.labels.pop();
+      // chart.data.datasets.forEach((dataset) => {
+      //     dataset.data.pop();
+      // });
     }
+
     nextProps.data.datasets.forEach(function(set, setIndex) {
       set.data.forEach(function(val, pointIndex) {
-        if (typeof(chart.datasets[setIndex][dataKey][pointIndex]) == "undefined") {
+        if (typeof(chart.data.datasets[setIndex][dataKey][pointIndex]) == "undefined") {
           addData(nextProps, chart, setIndex, pointIndex)
         } else {
-          chart.datasets[setIndex][dataKey][pointIndex].value = val
+          chart.data.datasets[setIndex][dataKey][pointIndex] = val
         }
       })
     })
   }
-};
+}
+
+function addData(nextProps, chart, setIndex, pointIndex) {
+  var values = []
+  chart.data.labels.push(nextProps.data.labels[setIndex]);
+  chart.data.datasets.forEach((dataset) => {
+    dataset.data.push(nextProps.data);
+  });
+}
 
 export default class Chart extends React.Component {
   state = {}
@@ -67,8 +76,28 @@ export default class Chart extends React.Component {
     this.canvassRef = React.createRef()
   }
 
-  componentDidMount = function() {
-    this.initializeChart(this.props);
+  componentDidMount() {
+    this.initializeChart(this.props)
+  }
+
+  componentWillUnmount() {
+    var chart = this.state.chart
+    chart.destroy()
+  }
+
+  componentWillReceiveProps(nextProps) {
+    var chart = this.state.chart;
+    if (nextProps.redraw) {
+      chart.destroy();
+      this.initializeChart(nextProps);
+    } else {
+      var dataKey = nextProps.dataKey || dataKeys[chart.config.type];
+      updatePoints(nextProps, chart, dataKey);
+      if (chart.scales) {
+        chart.config.data.labels = nextProps.data.labels
+      }
+      chart.update();
+    }
   }
 
   render() {
@@ -77,7 +106,7 @@ export default class Chart extends React.Component {
     for (var name in this.props) {
       if (this.props.hasOwnProperty(name)) {
         if (excludedProps.indexOf(name) === -1) {
-            _props[name] = this.props[name];
+            _props[name] = this.props[name]
         }
       }
     }
@@ -93,6 +122,7 @@ export default class Chart extends React.Component {
     var Chart = require('chart.js')
     var el = ReactDOM.findDOMNode(this.canvassRef.current)
     var ctx = el.getContext("2d")
-    var chart = new Chart(ctx, {type: 'line',data: nextProps.data, options: nextProps.options || {}});
+    var chart = new Chart(ctx, {type: 'line',data: nextProps.data, options: nextProps.options || {}})
+    this.state.chart = chart;
   }
 }
