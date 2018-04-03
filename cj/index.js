@@ -28,7 +28,7 @@ var Line = exports.Line = function (_React$Component) {
     return _react2.default.createElement(
       'div',
       null,
-      'Line'
+      'Bunlong!'
     );
   };
 
