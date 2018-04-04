@@ -247,6 +247,48 @@ export default class App extends Component {
 }
 ```
 
+### Polar area chart
+
+![Polar area chart](https://github.com/codefacebook/react-chartjsx/blob/master/images/polar-area-chart.png)
+
+```
+import { PolarArea } from 'react-chartjsx'
+
+export default class App extends Component {
+  state = {
+    polarAreaChartData: {
+      labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
+      datasets: [
+        {
+          label: "Population (millions)",
+          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+          data: [2478,5267,734,784,433]
+        }
+      ]
+    }
+  }
+
+  constructor(props) {
+    super(props)
+  }
+
+  render() {
+    const chartOptions = {
+      responsive: false
+    }
+
+    return (
+      <div>
+        <Radar data={this.state.polarAreaChartData} 
+               options={chartOptions} 
+               width={800} 
+               height={400} />
+      </div>
+    )
+  }
+}
+```
+
 ## Contributing
 
 We'd love to have your helping hand on contributions to react-chartjsx by forking and sending a pull request!
