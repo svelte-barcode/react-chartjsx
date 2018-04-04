@@ -331,6 +331,52 @@ export default class App extends Component {
 }
 ```
 
+### Grouped bars chart
+
+![Grouped bars chart](https://github.com/codefacebook/react-chartjsx/blob/master/images/grouped-bar-chart.png)
+
+```
+import { Bar } from 'react-chartjsx'
+
+export default class App extends Component {
+  state = {
+    groupedBarsChartData: {
+      labels: ["1900", "1950", "1999", "2050"],
+      datasets: [
+        {
+          label: "Africa",
+          backgroundColor: "#3e95cd",
+          data: [133,221,783,2478]
+        }, {
+          label: "Europe",
+          backgroundColor: "#8e5ea2",
+          data: [408,547,675,734]
+        }
+      ]
+    }
+  }
+
+  constructor(props) {
+    super(props)
+  }
+
+  render() {
+    const chartOptions = {
+      responsive: false
+    }
+
+    return (
+      <div>
+        <Bar data={this.state.groupedBarsChartData} 
+             options={chartOptions} 
+             width={800} 
+             height={400} />
+      </div>
+    )
+  }
+}
+```
+
 ## Contributing
 
 We'd love to have your helping hand on contributions to react-chartjsx by forking and sending a pull request!
