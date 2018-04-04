@@ -118,7 +118,7 @@ export default class Chart extends React.Component {
     }
     return (
       <div>
-        <canvas ref={this.canvassRef} {..._props} />
+        <canvas ref={this.props.ref ? this.props.ref : this.canvassRef} />
       </div>
     )
   }
