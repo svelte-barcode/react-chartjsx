@@ -89,6 +89,8 @@ export default class App extends Component {
 
 ### Line chart
 
+![Line chart](https://github.com/codefacebook/react-chartjsx/blob/master/images/line-chart.png)
+
 ```
 import { Line } from 'react-chartjsx'
 
