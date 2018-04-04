@@ -46,7 +46,6 @@ var updatePoints = function(nextProps, chart, dataKey) {
       })
     })
   } else {
-    // chart.scales['x-axis-0'].ticks.length
     while (chart.data.labels.length > nextProps.data.labels.length) {
       chart.data.labels.pop()
       chart.data.datasets.forEach((dataset) => {
@@ -116,9 +115,13 @@ export default class Chart extends React.Component {
         }
       }
     }
+    var canvasStyle = {
+      width: this.props.width ? this.props.width : "auto",
+      height: this.props.height ? this.props.height : "auto"
+    }
     return (
       <div>
-        <canvas ref={this.props.ref ? this.props.ref : this.canvassRef} />
+        <canvas ref={this.props.ref ? this.props.ref : this.canvassRef} style={canvasStyle} />
       </div>
     )
   }
