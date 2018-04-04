@@ -11,3 +11,12 @@ npm link react-chartjsx
 import { Link, Bar } from 'react-chartjsx';
 
 Using => <Line /> <Bar />
+
+===========================
+
+npm login
+npm version <update_type>
+npm publish
+
+npm version patch
+npm publish
