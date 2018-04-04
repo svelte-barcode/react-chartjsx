@@ -42,3 +42,47 @@ const chartOptions = {
      width={800} 
      height={400} />
 ```
+
+## Sample
+
+### Bar chart
+
+![Bar chart](https://github.com/codefacebook/react-chartjsx/blob/master/images/bar-chart.png)
+
+```
+import { Bar } from 'react-chartjsx'
+
+export default class App extends Component {
+  state = {
+    barChartData: {
+      labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
+      datasets: [
+        {
+          label: "Population (millions)",
+          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+          data: [2478,5267,734,784,433]
+        }
+      ]
+    }
+  }
+
+  constructor(props) {
+    super(props)
+  }
+
+  render() {
+    const chartOptions = {
+      responsive: false
+    }
+
+    return (
+      <div>
+        <Bar data={this.state.barChartData} 
+             options={chartOptions} 
+             width={800} 
+             height={400} />
+      </div>
+    )
+  }
+}
+```
