@@ -30,7 +30,7 @@ import { Bar, Line } from 'react-chartjsx'
 
 ### Custom size
 
-To custom size you need to set `responsive` to `false`
+To custom size you need to set `responsive` to `false`.
 
 ```
 const chartOptions = {
