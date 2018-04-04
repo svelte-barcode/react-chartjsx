@@ -1,3 +1,6 @@
+
+# react-chartjsx
+
 Official React [chart.js](http://www.chartjs.org) components.
 
 ## Installation using npm
@@ -44,5 +47,7 @@ const chartOptions = {
      width={800} 
      height={400} />
 ```
+
+## Document
 
 Go through [document](https://github.com/codefacebook/react-chartjsx "Github") for more details.
