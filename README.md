@@ -279,10 +279,52 @@ export default class App extends Component {
 
     return (
       <div>
-        <Radar data={this.state.polarAreaChartData} 
-               options={chartOptions} 
-               width={800} 
-               height={400} />
+        <PolarArea data={this.state.polarAreaChartData} 
+                   options={chartOptions} 
+                   width={800} 
+                   height={400} />
+      </div>
+    )
+  }
+}
+```
+
+### Doughnut chart
+
+![Doughnut chart](https://github.com/codefacebook/react-chartjsx/blob/master/images/doughnut-chart.png)
+
+```
+import { Doughnut } from 'react-chartjsx'
+
+export default class App extends Component {
+  state = {
+    doughnutChartData: {
+      labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
+      datasets: [
+        {
+          label: "Population (millions)",
+          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+          data: [2478,5267,734,784,433]
+        }
+      ]
+    }
+  }
+
+  constructor(props) {
+    super(props)
+  }
+
+  render() {
+    const chartOptions = {
+      responsive: false
+    }
+
+    return (
+      <div>
+        <Doughnut data={this.state.doughnutChartData} 
+                  options={chartOptions} 
+                  width={800} 
+                  height={400} />
       </div>
     )
   }
