@@ -1,8 +1,8 @@
 {
   "name": "react-chartjsx",
   "version": "1.0.0",
-  "description": "",
-  "main": "build/react-chartjsx.min.js",
+  "description": "Official React chart.js components.",
+  "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rimraf lib es build",
@@ -13,8 +13,8 @@
     "build": "npm run clean && npm run build:cjs && npm run build:es && npm run build:umd && npm run build:umd:min"
   },
   "author": "Bunlong",
-  "license": "ISC",
-  "dependencies": {
+  "license": "MIT",
+  "peerDependencies": {
     "chart.js": "^2.7.2",
     "react": "^16.3.0",
     "react-dom": "^16.3.0"
@@ -42,5 +42,24 @@
     "rollup-plugin-node-resolve": "^3.3.0",
     "rollup-plugin-uglify": "^3.0.0",
     "webpack": "^2.7.0"
+  },
+  "keywords": [
+    "chart",
+    "react-chartjsx",
+    "react",
+    "react-component",
+    "charts",
+    "chart-js",
+    "chart.js",
+    "graph",
+    "chartjs"
+  ],
+  "bugs": {
+    "url": "https://github.com/codefacebook/react-chartjsx/issues"
+  },
+  "homepage": "https://github.com/codefacebook/react-chartjsx",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/codefacebook/react-chartjsx.git"
   }
 }

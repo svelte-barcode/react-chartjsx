@@ -6,6 +6,12 @@
 
 We'd love to have your helping hand on contributions to react-chartjsx by forking and sending a pull request!
 
+## Installation
+
+```
+npm install react-chartjsx chart.js --save
+```
+
 ## Usage
 
 ```
@@ -442,3 +448,9 @@ export default class App extends Component {
 We'd love to have your helping hand on contributions to react-chartjsx by forking and sending a pull request!
 
 Your contributions are heartily ♡ welcome, recognized and appreciated. (✿◠‿◠)
+
+## License
+
+MIT License
+
+Copyright (c) 2018 [codefacebook](https://github.com/codefacebook), [Bunlong](https://github.com/Bunlong)
