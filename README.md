@@ -4,6 +4,8 @@
 
 ![react-chartjsx](https://github.com/codefacebook/react-chartjsx/blob/master/images/chart.png)
 
+We'd love to have your helping hand on contributions to react-chartjsx by forking and sending a pull request!
+
 ## Usage
 
 ```
@@ -189,3 +191,64 @@ export default class App extends Component {
   }
 }
 ```
+
+### Radar chart
+
+![Radar chart](https://github.com/codefacebook/react-chartjsx/blob/master/images/radar-chart.png)
+
+```
+import { Radar } from 'react-chartjsx'
+
+export default class App extends Component {
+  state = {
+    radarChartData: {
+      labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
+      datasets: [
+        {
+          label: "1950",
+          fill: true,
+          backgroundColor: "rgba(179,181,198,0.2)",
+          borderColor: "rgba(179,181,198,1)",
+          pointBorderColor: "#fff",
+          pointBackgroundColor: "rgba(179,181,198,1)",
+          data: [8.77,55.61,21.69,6.62,6.82]
+        }, {
+          label: "2050",
+          fill: true,
+          backgroundColor: "rgba(255,99,132,0.2)",
+          borderColor: "rgba(255,99,132,1)",
+          pointBorderColor: "#fff",
+          pointBackgroundColor: "rgba(255,99,132,1)",
+          pointBorderColor: "#fff",
+          data: [25.48,54.16,7.61,8.06,4.45]
+        }
+      ]
+    }
+  }
+
+  constructor(props) {
+    super(props)
+  }
+
+  render() {
+    const chartOptions = {
+      responsive: false
+    }
+
+    return (
+      <div>
+        <Radar data={this.state.radarChartData} 
+               options={chartOptions} 
+               width={800} 
+               height={400} />
+      </div>
+    )
+  }
+}
+```
+
+## Contributing
+
+We'd love to have your helping hand on contributions to react-chartjsx by forking and sending a pull request!
+
+Your contributions are heartily ♡ welcome, recognized and appreciated. (✿◠‿◠)
