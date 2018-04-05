@@ -20,6 +20,15 @@ npm publish
 
 npm version patch
 npm publish
+
+===========================
+
+"peerDependencies": {
+  "chart.js": "^2.7.2",
+  "react": "^16.3.0",
+  "react-dom": "^16.3.0"
+},
+
 ===========================
 
 # react-chartjsx

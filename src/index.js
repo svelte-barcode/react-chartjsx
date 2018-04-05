@@ -17,6 +17,14 @@ export class Bar extends React.Component {
   }
 }
 
+export class HorizontalBar extends React.Component {
+  render() {
+    return (
+      <Chart type="horizontalBar" {...this.props} />
+    )
+  }
+}
+
 export class Radar extends React.Component {
   render() {
     return (
