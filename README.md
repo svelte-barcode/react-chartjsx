@@ -4,7 +4,7 @@
 
 ![react-chartjsx](https://github.com/codefacebook/react-chartjsx/blob/master/images/chart.png)
 
-The Official React [chart.js](http://www.chartjs.org) components. [![version](https://img.shields.io/npm/v/react-chartjsx.svg?style=flat-square)](https://www.npmjs.com/package/react-chartjsx) [![downloads](https://img.shields.io/npm/dm/react-chartjsx.svg?style=flat-square)](https://www.npmjs.com/package/react-chartjsx) [![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](http://opensource.org/licenses/MIT).
+The Official React [chart.js](http://www.chartjs.org) components [![version](https://img.shields.io/npm/v/react-chartjsx.svg?style=flat-square)](https://www.npmjs.com/package/react-chartjsx) [![downloads](https://img.shields.io/npm/dm/react-chartjsx.svg?style=flat-square)](https://www.npmjs.com/package/react-chartjsx) [![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](http://opensource.org/licenses/MIT).
 
 We'd love to have your helping hand on contributions to react-chartjsx by forking and sending a pull request!
 
