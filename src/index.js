@@ -17,14 +17,6 @@ export class Bar extends React.Component {
   }
 }
 
-export class HorizontalBar extends React.Component {
-  render() {
-    return (
-      <Chart type="horizontalBar" {...this.props} />
-    )
-  }
-}
-
 export class Radar extends React.Component {
   render() {
     return (
@@ -57,10 +49,18 @@ export class PolarArea extends React.Component {
   }
 }
 
+export class HorizontalBar extends React.Component {
+  render() {
+    return (
+      <Chart type="horizontalBar" {...this.props} />
+    )
+  }
+}
+
 export class Bubble extends React.Component {
   render() {
     return (
-      <Chart {...this.props} />
+      <Chart type="bubble" {...this.props} />
     )
   }
 }

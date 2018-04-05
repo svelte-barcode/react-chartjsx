@@ -61,5 +61,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/codefacebook/react-chartjsx.git"
+  },
+  "dependencies": {
+    "lodash": "^4.17.5"
   }
 }
