@@ -41,8 +41,6 @@ var updatePoints = function(nextProps, chart, dataKey) {
         }
       })
     })
-  // } else if (name === "bubble") {
-  //   console.log("Todo");
   } else {
     while (chart.data.labels.length > nextProps.data.labels.length) {
       removeData(chart)
