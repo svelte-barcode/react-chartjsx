@@ -445,6 +445,14 @@ export default class App extends Component {
 }
 ```
 
+## Todo
+
+* Bubble chart
+
+* Scatter chart
+
+* Charts interacts with events
+
 ## Contributing
 
 We'd love to have your helping hand on contributions to react-chartjsx by forking and sending a pull request!
