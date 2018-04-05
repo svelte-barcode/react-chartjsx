@@ -63,6 +63,9 @@
     "url": "https://github.com/codefacebook/react-chartjsx.git"
   },
   "dependencies": {
-    "lodash": "^4.17.5"
+    "chart.js": "^2.7.2",
+    "lodash": "^4.17.5",
+    "react": "^16.3.1",
+    "react-dom": "^16.3.1"
   }
 }

@@ -5,7 +5,8 @@ import isEqual from 'lodash/isEqual'
 const dataKeys = {
   'line': 'data',
   'radar': 'data',
-  'bar': 'data'
+  'bar': 'data',
+  'horizontalBar': 'data'
 }
 
 var updatePoints = function(nextProps, chart, dataKey) {
@@ -40,13 +41,12 @@ var updatePoints = function(nextProps, chart, dataKey) {
         }
       })
     })
-  } else if (name === "bubble") {
-    console.log("Todo");
+  // } else if (name === "bubble") {
+  //   console.log("Todo");
   } else {
     while (chart.data.labels.length > nextProps.data.labels.length) {
       removeData(chart)
     }
-
     nextProps.data.datasets.forEach(function(set, setIndex) {
       set.data.forEach(function(val, pointIndex) {
         if (typeof(chart.data.datasets[setIndex][dataKey][pointIndex]) == "undefined") {
@@ -99,7 +99,7 @@ export default class Chart extends React.Component {
       width,
       data
     } = this.props
-    if (!isEqual(data.datasets, nextProps.data.datasets)) {
+    if (!isEqual(data.datasets, nextProps.data.datasets) || nextProps.redraw == true || type != nextProps.type || height != nextProps.height || width != nextProps.width || !isEqual(options, nextProps.options)) {
       var chart = this.state.chart
       if (nextProps.redraw) {
         chart.destroy()
