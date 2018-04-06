@@ -41,7 +41,10 @@ var updatePoints = function(nextProps, chart, dataKey) {
         }
       })
     })
-  } else {
+  } else if (name === "bubble") {
+    return false
+  }
+  else {
     while (chart.data.labels.length > nextProps.data.labels.length) {
       removeData(chart)
     }
@@ -88,7 +91,9 @@ export default class Chart extends React.Component {
     chart.destroy()
   }
 
-  componentWillReceiveProps(nextProps) {
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log(this.state.chart.data)
+    console.log(nextProps.data.datasets)
     const { 
       redraw,
       type,
@@ -97,7 +102,12 @@ export default class Chart extends React.Component {
       width,
       data
     } = this.props
-    if (!isEqual(data.datasets, nextProps.data.datasets) || nextProps.redraw == true || type != nextProps.type || height != nextProps.height || width != nextProps.width || !isEqual(options, nextProps.options)) {
+    if (!isEqual(data.datasets, nextProps.data.datasets) || 
+        nextProps.redraw == true || 
+        type != nextProps.type || 
+        height != nextProps.height || 
+        width != nextProps.width || 
+        !isEqual(options, nextProps.options)) {
       var chart = this.state.chart
       if (nextProps.redraw) {
         chart.destroy()
@@ -109,6 +119,7 @@ export default class Chart extends React.Component {
           chart.config.data.labels = nextProps.data.labels
         }
         chart.update()
+        return false
       }
     }
   }
