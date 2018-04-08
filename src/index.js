@@ -64,3 +64,12 @@ export class Bubble extends React.Component {
     )
   }
 }
+
+export class Scatter extends React.Component {
+  render() {
+    return (
+      <Chart type="scatter" {...this.props} />
+    )
+  }
+}
+

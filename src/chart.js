@@ -6,7 +6,8 @@ const dataKeys = {
   'line': 'data',
   'radar': 'data',
   'bar': 'data',
-  'horizontalBar': 'data'
+  'horizontalBar': 'data',
+  'bubble': 'data'
 }
 
 var updatePoints = function(nextProps, chart, dataKey) {
@@ -41,8 +42,29 @@ var updatePoints = function(nextProps, chart, dataKey) {
         }
       })
     })
-  } else if (name === "bubble") {
-    return false
+  } else if (name == "bubble") {
+    while (chart.data.datasets.length > nextProps.data.datasets.length) {
+      chart.data.datasets.pop()
+    }
+    nextProps.data.datasets.forEach(function(set, setIndex) {
+      if (typeof(chart.data.datasets[setIndex]) == "undefined") {
+        chart.data.datasets.push(nextProps.data.datasets[setIndex])
+      } else {
+        chart.data.datasets[setIndex][dataKey] = set.data
+      }
+    })
+  } else if (name == "scatter"){
+    if (chart.data.datasets.length > nextProps.data.datasets.length) {
+      chart.data.datasets.pop()
+    }
+    nextProps.data.datasets.forEach(function(set, setIndex){
+      if (typeof(chart.data.datasets[setIndex]) == "undefined") {
+        chart.data.datasets.push(nextProps.data.datasets[setIndex])
+      } else {
+        console.log(chart.data.datasets[setIndex])
+        chart.data.datasets[setIndex] = nextProps.data.datasets[setIndex]
+      }
+    })
   }
   else {
     while (chart.data.labels.length > nextProps.data.labels.length) {
@@ -92,8 +114,6 @@ export default class Chart extends React.Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    console.log(this.state.chart.data)
-    console.log(nextProps.data.datasets)
     const { 
       redraw,
       type,
