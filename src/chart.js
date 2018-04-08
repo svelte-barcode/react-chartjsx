@@ -61,7 +61,6 @@ var updatePoints = function(nextProps, chart, dataKey) {
       if (typeof(chart.data.datasets[setIndex]) == "undefined") {
         chart.data.datasets.push(nextProps.data.datasets[setIndex])
       } else {
-        console.log(chart.data.datasets[setIndex])
         chart.data.datasets[setIndex] = nextProps.data.datasets[setIndex]
       }
     })
