@@ -42,7 +42,7 @@ var updatePoints = function(nextProps, chart, dataKey) {
         }
       })
     })
-  } else if (name == "bubble") {
+  } else if (name === "bubble") {
     while (chart.data.datasets.length > nextProps.data.datasets.length) {
       chart.data.datasets.pop()
     }
@@ -53,7 +53,7 @@ var updatePoints = function(nextProps, chart, dataKey) {
         chart.data.datasets[setIndex][dataKey] = set.data
       }
     })
-  } else if (name == "scatter"){
+  } else if (name === "scatter"){
     if (chart.data.datasets.length > nextProps.data.datasets.length) {
       chart.data.datasets.pop()
     }
@@ -144,7 +144,11 @@ export default class Chart extends React.Component {
   }
 
   render() {
-    const excludedProps = ['data', 'options', 'redraw']
+    const excludedProps = [
+      'data', 
+      'options', 
+      'redraw'
+    ]
     var _props = {}
     for (var name in this.props) {
       if (this.props.hasOwnProperty(name)) {

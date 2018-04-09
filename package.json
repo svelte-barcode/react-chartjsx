@@ -10,10 +10,15 @@
     "build:es": "cross-env BABEL_ENV=jsnext babel src --out-dir es",
     "build:umd": "cross-env BABEL_ENV=rollup NODE_ENV=development rollup -c -o build/react-chartjsx.js",
     "build:umd:min": "cross-env BABEL_ENV=rollup NODE_ENV=production rollup -c -o build/react-chartjsx.min.js",
-    "build": "npm run build:cjs && npm run build:es && npm run build:umd && npm run build:umd:min"
+    "build": "npm run clean && npm run build:cjs && npm run build:es && npm run build:umd && npm run build:umd:min"
   },
   "author": "Bunlong",
   "license": "MIT",
+  "peerDependencies": {
+    "chart.js": "^2.7.2",
+    "react": "^16.3.0",
+    "react-dom": "^16.3.0"
+  },
   "devDependencies": {
     "babel": "^6.23.0",
     "babel-cli": "^6.26.0",
