@@ -649,4 +649,4 @@ Your contributions are heartily ♡ welcome, recognized and appreciated. (✿◠
 
 MIT License
 
-Copyright (c) 2018 [codefacebook](https://github.com/codefacebook), [Bunlong](https://github.com/Bunlong)
+Copyright (c) 2018 [codefacebook](https://github.com/codefacebook), Maintained by [Bunlong](https://github.com/Bunlong)
