@@ -589,8 +589,7 @@ export default class App extends Component {
               y: 6
             }
           ]
-        },
-        {
+        }, {
           label: 'Asia',
           borderColor: "#8e5ea2",
           data: [
