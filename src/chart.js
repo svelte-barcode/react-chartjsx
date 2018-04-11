@@ -126,7 +126,8 @@ export default class Chart extends React.Component {
         type != nextProps.type || 
         height != nextProps.height || 
         width != nextProps.width || 
-        !isEqual(options, nextProps.options)) {
+        !isEqual(options, nextProps.options) ||
+        !isEqual(plugins, nextProps.plugins)) {
       var chart = this.state.chart
       if (nextProps.redraw) {
         chart.destroy()
@@ -172,7 +173,7 @@ export default class Chart extends React.Component {
     var Chart = require('chart.js')
     var el = ReactDOM.findDOMNode(this.canvassRef.current)
     var ctx = el.getContext("2d")
-    var chart = new Chart(ctx, {type: nextProps.type, data: nextProps.data, options: nextProps.options || {}})
+    var chart = new Chart(ctx, {type: nextProps.type, data: nextProps.data, options: nextProps.options || {}, plugins: nextProps.plugins || {}})
     this.state.chart = chart;
   }
 }
