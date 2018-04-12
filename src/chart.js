@@ -105,6 +105,8 @@ export default class Chart extends React.Component {
 
   componentDidMount() {
     this.initializeChart(this.props)
+    this.props.getChart && this.props.getChart(this.state.chart)
+    this.props.getCanvas && this.props.getCanvas(this.canvassRef)
   }
 
   componentWillUnmount() {
@@ -119,7 +121,8 @@ export default class Chart extends React.Component {
       options,
       height,
       width,
-      data
+      data,
+      plugins
     } = this.props
     if (!isEqual(data.datasets, nextProps.data.datasets) || 
         nextProps.redraw == true || 
@@ -144,6 +147,18 @@ export default class Chart extends React.Component {
     }
   }
 
+  handleOnClick = (event) => {
+    const {
+      getDatasetAtEvent,
+      getElementAtEvent,
+      getElementsAtEvent,
+    } = this.props
+    getDatasetAtEvent && getDatasetAtEvent(this.state.chart.getDatasetAtEvent(event), event)
+    getElementAtEvent && getElementAtEvent(this.state.chart.getElementAtEvent(event), event)
+    getElementsAtEvent && getElementsAtEvent(this.state.chart.getElementsAtEvent(event), event)
+  }
+
+
   render() {
     const excludedProps = [
       'data', 
@@ -164,7 +179,7 @@ export default class Chart extends React.Component {
     }
     return (
       <div>
-        <canvas ref={this.props.ref ? this.props.ref : this.canvassRef} style={canvasStyle} />
+        <canvas ref={this.props.ref ? this.props.ref : this.canvassRef} style={canvasStyle} onClick={this.handleOnClick} />
       </div>
     )
   }
