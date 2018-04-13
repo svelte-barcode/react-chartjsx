@@ -37,6 +37,11 @@ import { Bar, Line } from 'react-chartjsx'
 * height: PropTypes.number
 * options: PropTypes.object
 * redraw: PropTypes.bool
+* getDatasetAtEvent: PropTypes.func
+* getElementAtEvent: PropTypes.func
+* getElementsAtEvent: PropTypes.func
+* getChart: PropTypes.func
+* getCanvas: PropTypes.func
 
 ### Custom size
 
@@ -51,6 +56,88 @@ const chartOptions = {
      options={chartOptions} 
      width={800} 
      height={400} />
+```
+
+### Events
+
+#### getDatasetAtEvent
+
+Looks for the element under the event point, then returns all elements from that dataset. This is used internally for 'dataset' mode highlighting
+
+```
+const chartOptions = {
+  responsive: false
+}
+
+<Bar data={this.state.barChartData} 
+     options={chartOptions} 
+     width={800} 
+     height={400} 
+     getDatasetAtEvent={(dataset, event) => {console.log(dataset)}} />
+```
+
+#### getElementAtEvent
+
+Calling getElementAtEvent(event) on your Chart instance passing an argument of an event, will return the single element at the event position. If there are multiple items within range, only the first is returned.
+
+```
+const chartOptions = {
+  responsive: false
+}
+
+<Bar data={this.state.barChartData} 
+     options={chartOptions} 
+     width={800} 
+     height={400} 
+     getElementAtEvent={(elems, event) => {console.log(elems)}} />
+```
+
+#### getElementsAtEvent
+
+A function to be called when mouse clicked on chart elememts, will return all element at that point as an array. 
+
+```
+const chartOptions = {
+  responsive: false
+}
+
+<Bar data={this.state.barChartData} 
+     options={chartOptions} 
+     width={800} 
+     height={400} 
+     getElementsAtEvent={(elems, event) => {console.log(elems)}} />
+```
+
+#### getChart
+
+A function to be called for getting chartjs object.
+
+```
+const chartOptions = {
+  responsive: false
+}
+
+<Bar data={this.state.barChartData} 
+     options={chartOptions} 
+     width={800} 
+     height={400} 
+     getChart={(chart) => {console.log(chart)}} />
+```
+
+#### getCanvas
+
+A function to be called for getting canvas element.
+
+```
+const chartOptions = {
+  responsive: false
+}
+
+<Bar data={this.state.barChartData} 
+     options={chartOptions} 
+     width={800} 
+     height={400} 
+     getCanvas={(canvas) => {console.log(canvas)}} />
 ```
 
 ## Sample
