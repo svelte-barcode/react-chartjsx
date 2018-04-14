@@ -722,9 +722,7 @@ export default class App extends Component {
 
 ## Todo
 
-* Charts interacts with events
-
-* Plugin
+* Integrate with plugins
 
 ## Contributing
 
