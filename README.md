@@ -43,6 +43,20 @@ import { Bar, Line } from 'react-chartjsx'
 * getChart: PropTypes.func
 * getCanvas: PropTypes.func
 
+### Redraw
+
+If you want the chart destroyed and redrawn on every change, pass in `redraw` as `true`.
+
+```
+import { Bar } from 'react-chartjsx'
+
+<Bar data={this.state.barChartData} 
+     options={chartOptions} 
+     width={800} 
+     height={400} 
+     redraw={true} />
+```
+
 ### Custom size
 
 To custom size you need to set `responsive` to `false`.
