@@ -131,11 +131,14 @@ export default class Chart extends React.Component {
         width != nextProps.width || 
         !isEqual(options, nextProps.options) ||
         !isEqual(plugins, nextProps.plugins)) {
+
       var chart = this.state.chart
       if (nextProps.redraw) {
         chart.destroy()
         this.initializeChart(nextProps)
-      } else {
+        return true
+      }
+      else {
         var dataKey = nextProps.dataKey || dataKeys[chart.config.type]
         updatePoints(nextProps, chart, dataKey)
         if (chart.scales) {
@@ -145,6 +148,7 @@ export default class Chart extends React.Component {
         return false
       }
     }
+    return false
   }
 
   handleOnClick = (event) => {
