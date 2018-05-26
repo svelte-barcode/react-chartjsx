@@ -12,7 +12,6 @@ const dataKeys = {
 
 var updatePoints = function(nextProps, chart, dataKey) {
   var name = chart.config.type
-  var nextProps = nextProps
 
   if (name === 'polarArea' || name === 'pie' || name === 'doughnut') {
     nextProps.data.datasets.forEach(function(segment, segmentIndex) {
@@ -35,7 +34,7 @@ var updatePoints = function(nextProps, chart, dataKey) {
     removeData(chart)
     nextProps.data.datasets.forEach(function(set, setIndex) {
       set.data.forEach(function(val, pointIndex) {
-        if (typeof(chart.data.datasets[setIndex][dataKey][pointIndex]) == "undefined") {
+        if (typeof(chart.data.datasets[setIndex][dataKey][pointIndex]) === 'undefined') {
           addData(nextProps, chart, setIndex)
         } else {
           chart.data.datasets[setIndex][dataKey][pointIndex] = val
@@ -47,7 +46,7 @@ var updatePoints = function(nextProps, chart, dataKey) {
       chart.data.datasets.pop()
     }
     nextProps.data.datasets.forEach(function(set, setIndex) {
-      if (typeof(chart.data.datasets[setIndex]) == "undefined") {
+      if (typeof(chart.data.datasets[setIndex]) === 'undefined') {
         chart.data.datasets.push(nextProps.data.datasets[setIndex])
       } else {
         chart.data.datasets[setIndex][dataKey] = set.data
@@ -58,7 +57,7 @@ var updatePoints = function(nextProps, chart, dataKey) {
       chart.data.datasets.pop()
     }
     nextProps.data.datasets.forEach(function(set, setIndex){
-      if (typeof(chart.data.datasets[setIndex]) == "undefined") {
+      if (typeof(chart.data.datasets[setIndex]) === 'undefined') {
         chart.data.datasets.push(nextProps.data.datasets[setIndex])
       } else {
         chart.data.datasets[setIndex] = nextProps.data.datasets[setIndex]
@@ -71,7 +70,7 @@ var updatePoints = function(nextProps, chart, dataKey) {
     }
     nextProps.data.datasets.forEach(function(set, setIndex) {
       set.data.forEach(function(val, pointIndex) {
-        if (typeof(chart.data.datasets[setIndex][dataKey][pointIndex]) == "undefined") {
+        if (typeof(chart.data.datasets[setIndex][dataKey][pointIndex]) === 'undefined') {
           addData(nextProps, chart, setIndex)
         } else {
           chart.data.datasets[setIndex][dataKey][pointIndex] = val
@@ -125,10 +124,10 @@ export default class Chart extends React.Component {
       plugins
     } = this.props
     if (!isEqual(data.datasets, nextProps.data.datasets) || 
-        nextProps.redraw == true || 
-        type != nextProps.type || 
-        height != nextProps.height || 
-        width != nextProps.width || 
+        nextProps.redraw === true || 
+        type !== nextProps.type || 
+        height !== nextProps.height || 
+        width !== nextProps.width || 
         !isEqual(options, nextProps.options) ||
         !isEqual(plugins, nextProps.plugins)) {
 
@@ -194,5 +193,8 @@ export default class Chart extends React.Component {
     var ctx = el.getContext("2d")
     var chart = new Chart(ctx, {type: nextProps.type, data: nextProps.data, options: nextProps.options || {}, plugins: nextProps.plugins || {}})
     this.state.chart = chart;
+    // this.setState({
+    //   chart: chart
+    // })
   }
 }
